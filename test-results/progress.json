@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0.0",
+  "runGroupId": "d739db78-b95a-487a-b417-90cf170ad6d2",
+  "status": "PASSED",
+  "totalRuns": 1,
+  "completedRuns": 1,
+  "completedSteps": 6,
+  "totalSteps": 6,
+  "startedAt": "2026-09-13T05:54:14.744Z",
+  "updatedAt": "2026-09-13T05:55:12.748Z",
+  "runs": [
+    {
+      "runId": "b933fe9a-c6e5-407d-9b3a-07362fa1a189",
+      "testId": "22def6f2-6087-4144-bbb6-c689b48fba7d",
+      "testName": "add-to-cart",
+      "directory": "web",
+      "status": "PASSED",
+      "completedSteps": 6,
+      "totalSteps": 6,
+      "startedAt": "2026-09-13T05:54:15.682Z",
+      "updatedAt": "2026-09-13T05:55:11.939Z"
+    }
+  ]
+}

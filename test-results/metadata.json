@@ -1,0 +1,36 @@
+{
+  "gitMainBranch": "main",
+  "gitProtectedBranches": [
+    "main"
+  ],
+  "ciProvider": "none",
+  "gitOriginUrl": "origin",
+  "gitLocalEmail": "151172846+PAWANKMR284@users.noreply.github.com",
+  "gitLocalName": "PAWAN KUMAR",
+  "projectName": "company",
+  "id": "d739db78-b95a-487a-b417-90cf170ad6d2",
+  "trigger": "CLI",
+  "startedAt": "2026-09-13T05:54:14.741Z",
+  "status": "PASSED",
+  "cliVersion": "3.57.0",
+  "labels": [],
+  "ai": {
+    "useMemory": true,
+    "failureRecovery": true,
+    "agentConfig": {
+      "locator": "v5",
+      "assertion": "v5",
+      "visual-assertion": "v4.0",
+      "text-extraction": "v3.0",
+      "failure-recovery": "v2.1",
+      "android-locator": "v2",
+      "ios-locator": "v2"
+    }
+  },
+  "browser": {
+    "disableSecondaryCacheResolution": true,
+    "autoExpandIframes": true
+  },
+  "updatedAt": "2026-09-13T05:55:12.747Z",
+  "finishedAt": "2026-09-13T05:55:12.747Z"
+}
