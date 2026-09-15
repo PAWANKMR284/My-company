@@ -19,7 +19,7 @@ h1, h2, h3, p { margin-top: 0; }.hero h1 { font-size: clamp(64px, 9.5vw, 145px);
 /* Reference-inspired visual system: photographic hero, utility header, and service cards. */
 .site-header { background: #fff; color: #171217; position: absolute; }
 .hero { background: #170d10; color: #fff; min-height: 720px; overflow: hidden; padding-top: 190px; }
-.hero::before { background: linear-gradient(90deg, rgba(15, 8, 11, .94) 0%, rgba(15, 8, 11, .62) 45%, rgba(15, 8, 11, .28) 100%), url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=88") center / cover; content: ""; inset: 0; opacity: .94; position: absolute; }
+.hero::before { background: linear-gradient(90deg, rgba(15, 8, 11, .94) 0%, rgba(15, 8, 11, .62) 45%, rgba(15, 8, 11, .28) 100%); content: ""; inset: 0; opacity: .94; position: absolute; }
 .hero-copy { max-width: 800px; }
 .hero .eyebrow { color: #fff; }
 .hero h1 { font-size: clamp(54px, 7.6vw, 112px); letter-spacing: -.075em; line-height: .91; max-width: 850px; }

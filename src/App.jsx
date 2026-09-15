@@ -12,21 +12,21 @@ import { SiteHeader } from "./components/SiteHeader";
 const heroImages = [
   {
     image:
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=88",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&fm=webp&w=1800&q=82",
     eyebrow: "Strategy, design, and engineering · India",
     title: ["Build software", "that moves", "business forward."],
     copy: "We understand your technology needs and deliver tailored digital products for lasting impact.",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=88",
+      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&fm=webp&w=1800&q=82",
     eyebrow: "Ideas into products · Together",
     title: ["Turn ideas", "into useful", "experiences."],
     copy: "From the first sketch to the final release, we make ambitious ideas clear, useful, and ready to grow.",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1800&q=88",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&fm=webp&w=1800&q=82",
     eyebrow: "Digital partners for bold teams",
     title: ["Make progress", "feel", "remarkable."],
     copy: "Senior thinking and thoughtful technology help your team move faster without losing the human detail.",
@@ -58,7 +58,10 @@ function Hero() {
             key={image}
             src={image}
             alt=""
-            loading="eager"
+            width="1800"
+            height="1200"
+            loading={index === 0 ? "eager" : "lazy"}
+            fetchPriority={index === 0 ? "high" : "low"}
             decoding="async"
           />
         ))}

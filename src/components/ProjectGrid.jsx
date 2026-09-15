@@ -34,7 +34,10 @@ function ProjectCarousel({ title, tag, image, images }) {
           key={slide}
           src={slide}
           alt={`${title} project, view ${index + 1}`}
-          loading="eager"
+          width="1200"
+          height="800"
+          loading="lazy"
+          fetchPriority="low"
           decoding="async"
         />
       ))}
