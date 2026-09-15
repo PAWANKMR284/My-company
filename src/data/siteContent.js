@@ -1,22 +1,22 @@
 export const services = [
   {
     number: "01",
-    title: "Product engineering",
-    copy: "From a sharp first release to a platform built for scale, we turn ideas into software people want to use.",
+    title: "Professional software development",
+    copy: "From a sharp first release to a platform built for scale, Pawan Tech Solution creates software people want to use.",
   },
   {
     number: "02",
-    title: "Web & mobile apps",
-    copy: "Fast, focused digital products that feel effortless on every screen and keep your customers moving.",
+    title: "Custom web development services",
+    copy: "Fast, focused websites and mobile products with responsive web design that feels effortless on every screen.",
   },
   {
     number: "03",
-    title: "AI & automation",
-    copy: "Practical intelligence for repetitive work, richer decisions, and the next chapter of your operation.",
+    title: "IT consultancy solutions",
+    copy: "Practical technology guidance for repetitive work, richer decisions, and the next chapter of your operation.",
   },
   {
     number: "04",
-    title: "Growth partnerships",
+    title: "Software solutions in Delhi",
     copy: "A senior product team on call to improve what exists, unlock momentum, and make every release count.",
   },
 ];

@@ -13,23 +13,23 @@ const heroImages = [
   {
     image:
       "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&fm=webp&w=1800&q=82",
-    eyebrow: "Strategy, design, and engineering · India",
+    eyebrow: "Pawan Tech Software Solutions · India",
     title: ["Build software", "that moves", "business forward."],
-    copy: "We understand your technology needs and deliver tailored digital products for lasting impact.",
+    copy: "Pawan Tech Solution delivers professional web development and tailored digital products for lasting business impact.",
   },
   {
     image:
       "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&fm=webp&w=1800&q=82",
-    eyebrow: "Ideas into products · Together",
+    eyebrow: "Custom Web Development Services · Together",
     title: ["Turn ideas", "into useful", "experiences."],
-    copy: "From the first sketch to the final release, we make ambitious ideas clear, useful, and ready to grow.",
+    copy: "From the first sketch to the final release, we create responsive web design and digital products ready to grow.",
   },
   {
     image:
       "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&fm=webp&w=1800&q=82",
-    eyebrow: "Digital partners for bold teams",
+    eyebrow: "IT Consultancy Solutions for bold teams",
     title: ["Make progress", "feel", "remarkable."],
-    copy: "Senior thinking and thoughtful technology help your team move faster without losing the human detail.",
+    copy: "Senior thinking and thoughtful technology help your team move faster with practical software solutions in Delhi and beyond.",
   },
 ];
 
@@ -125,8 +125,9 @@ function IntroSection() {
         <div>
           <p className="lead">
             The best digital products feel simple because a lot of care went
-            into making them that way. We bring strategy, design, and
-            engineering together to make complex things feel clear.
+            into making them that way. As a Web Development Company in Varanasi,
+            Pawan Tech Solution brings strategy, design, and engineering
+            together to make complex things feel clear.
           </p>
           <TextLink>More about us</TextLink>
         </div>
@@ -141,9 +142,9 @@ function ServicesSection() {
       <div className="section-heading">
         <Eyebrow>What we do</Eyebrow>
         <h2>
-          Built for the
+          Professional IT &amp; Web
           <br />
-          <em>bold</em> ones.
+          <em>development services.</em>
         </h2>
       </div>
       <ServiceList />
