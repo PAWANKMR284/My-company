@@ -1,23 +1,101 @@
 export const services = [
   {
     number: "01",
-    title: "Professional software development",
-    copy: "From a sharp first release to a platform built for scale, Pawan Tech Solution creates software people want to use.",
+    title: "Full-Stack Development",
+    kicker: "From Idea to Launch.",
+    summary:
+      "We cover every layer of your product — design, frontend, backend, mobile, and infrastructure. One team, end-to-end.",
+    details: [
+      "React, Next.js, TypeScript",
+      "REST & GraphQL APIs",
+      "Cloud deployment (AWS, GCP, Vercel)",
+      "Performance & SEO optimisation",
+      "Responsive across all devices",
+    ],
   },
   {
     number: "02",
-    title: "Custom web development services",
-    copy: "Fast, focused websites and mobile products with responsive web design that feels effortless on every screen.",
+    title: "Web App Development",
+    kicker: "Scalable web products built for growth.",
+    summary:
+      "We build fast, reliable, and scalable web applications using modern frameworks like React, Next.js, and Node.js. Whether you need a SaaS platform, an internal tool, or a customer-facing product — we architect it right from day one.",
+    details: [
+      "React, Next.js, TypeScript",
+      "REST & GraphQL APIs",
+      "Cloud deployment (AWS, GCP, Vercel)",
+      "Performance & SEO optimisation",
+      "Responsive across all devices",
+    ],
   },
   {
     number: "03",
-    title: "IT consultancy solutions",
-    copy: "Practical technology guidance for repetitive work, richer decisions, and the next chapter of your operation.",
+    title: "Mobile App Development",
+    kicker: "Cross-platform apps that feel native.",
+    summary:
+      "We build iOS and Android apps using React Native — one codebase, two platforms, zero compromise on quality. From onboarding flows to complex real-time features, we deliver apps users love.",
+    details: [
+      "React Native (iOS & Android)",
+      "Offline-first architecture",
+      "Push notifications & deep linking",
+      "App Store & Play Store submission",
+      "Real-time features & WebSockets",
+    ],
   },
   {
     number: "04",
-    title: "Software solutions in Delhi",
-    copy: "A senior product team on call to improve what exists, unlock momentum, and make every release count.",
+    title: "UI/UX Design",
+    kicker: "Great software starts with great design.",
+    summary:
+      "We create user interfaces that are intuitive, accessible, and on-brand — backed by user research, wireframes, and high-fidelity prototypes before a single line of code is written.",
+    details: [
+      "User research & personas",
+      "Wireframes & prototypes",
+      "Figma design systems",
+      "Accessibility (WCAG 2.1)",
+      "Usability testing",
+    ],
+  },
+  {
+    number: "05",
+    title: "API & Backend Development",
+    kicker: "Robust systems that scale under pressure.",
+    summary:
+      "We design and build the backend infrastructure that powers your product — secure APIs, databases, authentication, third-party integrations, and cloud infrastructure. Built to handle growth without breaking.",
+    details: [
+      "Node.js, Express, NestJS",
+      "PostgreSQL, MySQL, MongoDB",
+      "JWT & OAuth authentication",
+      "Third-party API integrations",
+      "CI/CD pipelines & DevOps",
+    ],
+  },
+  {
+    number: "06",
+    title: "MVP Development",
+    kicker: "Validate fast. Build right. Launch lean.",
+    summary:
+      "Got an idea? We'll help you ship a production-ready MVP in weeks — not months. We focus on the core features that matter, cut the noise, and get you in front of real users as fast as possible.",
+    details: [
+      "Scope & feature prioritisation",
+      "4–8 week delivery timeline",
+      "Full-stack implementation",
+      "Investor-ready demo builds",
+      "Post-launch iteration support",
+    ],
+  },
+  {
+    number: "07",
+    title: "Tech Consulting",
+    kicker: "Strategic guidance from engineers who've been there.",
+    summary:
+      "Not sure which stack to use? Struggling with architecture decisions? We provide hands-on technical consulting to help you make the right calls — from choosing your tech stack to planning your scaling strategy.",
+    details: [
+      "Tech stack selection",
+      "Architecture reviews",
+      "Code audits & refactoring plans",
+      "Scaling & performance strategy",
+      "CTO-as-a-service for startups",
+    ],
   },
 ];
 

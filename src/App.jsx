@@ -154,6 +154,29 @@ function ServicesSection() {
 }
 
 function WorkSection() {
+  const processSteps = [
+    {
+      number: "01",
+      title: "Discovery",
+      copy: "We start by understanding your business goals, users, and constraints. No assumptions — just sharp questions and clear answers.",
+    },
+    {
+      number: "02",
+      title: "Planning",
+      copy: "We define scope, architecture, and timeline. You get a detailed project plan before any code is written.",
+    },
+    {
+      number: "03",
+      title: "Build",
+      copy: "Iterative development with weekly demos. You see progress every step of the way — no black-box delivery.",
+    },
+    {
+      number: "04",
+      title: "Launch",
+      copy: "We deploy, test, and hand over. Full documentation, clean code, and post-launch support included.",
+    },
+  ];
+
   return (
     <section className="work section-pad reveal-section" id="work">
       <div className="section-heading work-heading">
@@ -168,6 +191,25 @@ function WorkSection() {
         <TextLink className="light-link">View all work</TextLink>
       </div>
       <ProjectGrid />
+
+      <div className="how-we-work">
+        <div className="how-we-work-header">
+          <h2 className="how-we-work-heading">How We Work</h2>
+        </div>
+        <p className="how-we-work-subtitle">
+          A clear, no-surprises process from kickoff to launch.
+        </p>
+
+        <div className="work-process-grid">
+          {processSteps.map(({ number, title, copy }) => (
+            <article className="process-step" key={number}>
+              <span className="process-number">{number}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
