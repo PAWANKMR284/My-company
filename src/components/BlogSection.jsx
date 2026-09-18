@@ -29,9 +29,12 @@ export function BlogSection() {
               <div className="blog-card-image-wrap">
                 <img
                   src={post.image}
+                  srcSet={`${post.image}&w=700 700w, ${post.image}&w=1200 1200w`}
+                  sizes="(max-width: 760px) 100vw, 33vw"
                   alt={post.title}
                   className="blog-card-image"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="blog-card-body">

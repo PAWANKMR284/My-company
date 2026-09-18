@@ -62,6 +62,8 @@ function Hero() {
             className={index === activeImage ? "is-active" : ""}
             key={image}
             src={image}
+            srcSet={`${image}&w=900 900w, ${image}&w=1400 1400w, ${image}&w=1800 1800w`}
+            sizes="100vw"
             alt=""
             width="1800"
             height="1200"

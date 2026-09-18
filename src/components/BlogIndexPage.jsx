@@ -20,8 +20,12 @@ export function BlogIndexPage() {
             <article className="blog-index-card" key={post.slug}>
               <img
                 src={post.image}
+                srcSet={`${post.image}&w=700 700w, ${post.image}&w=1200 1200w`}
+                sizes="(max-width: 760px) 100vw, 50vw"
                 alt={post.title}
                 className="blog-index-image"
+                loading="lazy"
+                decoding="async"
               />
               <div className="blog-index-body">
                 <div className="blog-meta-row">

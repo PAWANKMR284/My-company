@@ -33,6 +33,8 @@ function ProjectCarousel({ title, tag, image, images }) {
           className={index === activeIndex ? "is-active" : ""}
           key={slide}
           src={slide}
+          srcSet={`${slide}&w=700 700w, ${slide}&w=1200 1200w`}
+          sizes="(max-width: 760px) 100vw, 50vw"
           alt={`${title} project, view ${index + 1}`}
           width="1200"
           height="800"
