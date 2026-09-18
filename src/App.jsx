@@ -444,12 +444,14 @@ function App() {
         onMenuToggle={() => setMenuOpen(!menuOpen)}
         onNavigate={closeMenu}
       />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/blog" element={<BlogIndexPage />} />
-        <Route path="/blog/:slug" element={<BlogPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <main id="main-content" className="site-main">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/blog" element={<BlogIndexPage />} />
+          <Route path="/blog/:slug" element={<BlogPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
       {location.pathname === "/" && <SiteFooter />}
       {location.pathname.startsWith("/blog") && <SiteFooter />}
     </div>
