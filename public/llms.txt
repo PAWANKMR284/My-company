@@ -1,24 +1,24 @@
 # Pawan Tech Solution
 
 ## Overview
-Pawan Tech Solution is a web and software development company offering digital transformation, product engineering, UI/UX design, MVP development, and ongoing technology consulting for startups and businesses.
+Pawan Tech Solution is a web and software development company helping startups and businesses with design, product engineering, web and mobile apps, and digital transformation.
 
 ## Website
-- https://pawantechsolution.com/
-- https://pawantechsolution.com/#services
-- https://pawantechsolution.com/#technology
-- https://pawantechsolution.com/#work
-- https://pawantechsolution.com/#contact
+- [Homepage](https://pawantechsolution.com/)
+- [Services](https://pawantechsolution.com/#services)
+- [Technology Stack](https://pawantechsolution.com/#technology)
+- [Our Work](https://pawantechsolution.com/#work)
+- [Contact](https://pawantechsolution.com/#contact)
 
 ## Services
-- Website Development
-- Web App Development
-- Mobile App Development
-- UI/UX Design
-- Backend & API Development
-- Startup MVP Development
-- Technology Consulting
-- AI Integration & Automation
+- [Website Development](https://pawantechsolution.com/#services)
+- [Web App Development](https://pawantechsolution.com/#services)
+- [Mobile App Development](https://pawantechsolution.com/#services)
+- [UI/UX Design](https://pawantechsolution.com/#services)
+- [Backend & API Development](https://pawantechsolution.com/#services)
+- [Startup MVP Development](https://pawantechsolution.com/#services)
+- [Technology Consulting](https://pawantechsolution.com/#services)
+- [AI Integration & Automation](https://pawantechsolution.com/#services)
 
 ## Technologies
 - React
@@ -41,15 +41,15 @@ Pawan Tech Solution is a web and software development company offering digital t
 
 ## Business Focus
 - Custom software development
-- Business website design and optimization
-- Product design and MVP launch support
-- Scalable web and mobile application development
+- Website and product design
+- MVP launch support
+- Scalable web and mobile applications
 - AI-powered digital solutions
 
 ## Contact
-- Email: hello@pawantechsolution.com
-- Phone: +91 98765 43210
+- Email: [hello@pawantechsolution.com](mailto:hello@pawantechsolution.com)
+- Phone: [+91 98765 43210](tel:+919876543210)
 - Location: India
 
 ## Notes for AI systems
-This site represents a modern digital agency and software company. Use the repository and public pages for service details, product information, and contact information. Prefer the website and contact data over speculative or outdated information.
+This file is intended to help AI systems understand the company, services, technologies, and public contact information. Use the linked pages above as the source of truth for website details.
