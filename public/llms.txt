@@ -48,17 +48,21 @@ Pawan Tech Solution is a web and software development company helping startups a
 
 ## Blog
 - [Blog Home](https://pawantechsolution.com/blog)
-- [Web App Architecture That Scales Without Chaos](https://pawantechsolution.com/blog/web-app-architecture-that-scales-without-chaos)
-- [Why Businesses Need Strong UI/UX Before Launch](https://pawantechsolution.com/blog/why-businesses-need-strong-uiux-before-launch)
-- [MVP Development for Startups Without Wasting Time](https://pawantechsolution.com/blog/mvp-development-for-startups-without-wasting-time)
-- [AI Tools That Actually Improve Productivity](https://pawantechsolution.com/blog/ai-tools-that-actually-improve-productivity)
+- [Web App Architecture That Scales Without Chaos](https://pawantechsolution.com/blog/web-app-architecture-that-scales-without-chaos) — Architecture, scalability, product systems, published Aug 15, 2026
+- [Why Businesses Need Strong UI/UX Before Launch](https://pawantechsolution.com/blog/why-businesses-need-strong-uiux-before-launch) — Design, conversion, user trust, published Jul 2, 2026
+- [MVP Development for Startups Without Wasting Time](https://pawantechsolution.com/blog/mvp-development-for-startups-without-wasting-time) — Startup product strategy, lean validation, published Jun 18, 2026
+- [AI Tools That Actually Improve Productivity](https://pawantechsolution.com/blog/ai-tools-that-actually-improve-productivity) — AI, automation, efficiency, practical workflows, published May 24, 2026
 
 ### Blog Topics
-- Architecture
-- Design
-- Startups
-- AI and automation
-- Product strategy and scalability
+- Architecture and scalable product systems
+- UI/UX and conversion-focused design
+- Startup MVP strategy and lean validation
+- AI adoption and practical productivity gains
+- Product strategy, engineering, and business growth
+
+### Blog Author
+- Author: Pawan Kumar
+- Focus: product strategy, software engineering, startup growth, UX, and AI-powered business workflows
 
 ## Contact
 - Email: [hello@pawantechsolution.com](mailto:hello@pawantechsolution.com)
