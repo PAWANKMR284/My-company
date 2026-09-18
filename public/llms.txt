@@ -46,6 +46,20 @@ Pawan Tech Solution is a web and software development company helping startups a
 - Scalable web and mobile applications
 - AI-powered digital solutions
 
+## Blog
+- [Blog Home](https://pawantechsolution.com/blog)
+- [Web App Architecture That Scales Without Chaos](https://pawantechsolution.com/blog/web-app-architecture-that-scales-without-chaos)
+- [Why Businesses Need Strong UI/UX Before Launch](https://pawantechsolution.com/blog/why-businesses-need-strong-uiux-before-launch)
+- [MVP Development for Startups Without Wasting Time](https://pawantechsolution.com/blog/mvp-development-for-startups-without-wasting-time)
+- [AI Tools That Actually Improve Productivity](https://pawantechsolution.com/blog/ai-tools-that-actually-improve-productivity)
+
+### Blog Topics
+- Architecture
+- Design
+- Startups
+- AI and automation
+- Product strategy and scalability
+
 ## Contact
 - Email: [hello@pawantechsolution.com](mailto:hello@pawantechsolution.com)
 - Phone: [+91 98765 43210](tel:+919876543210)
