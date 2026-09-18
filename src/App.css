@@ -51,6 +51,53 @@ h1, h2, h3, p { margin-top: 0; }.hero h1 { font-size: clamp(64px, 9.5vw, 145px);
 .intro h2 em, .industry-head h2 em, .faq h2 em, .contact h2 em { color: var(--accent); }
 .industries { background: #fff; }
 .numbers { background: #f1e4dc; }
+.technology { background: #edf3f6; border-top: 1px solid rgba(16, 27, 40, .12); border-bottom: 1px solid rgba(16, 27, 40, .12); overflow: hidden; }
+.technology-header { margin-bottom: 20px; text-align: center; }
+.technology-title {
+  font-size: clamp(40px, 5vw, 72px);
+  letter-spacing: -.08em;
+  line-height: .9;
+  margin: 0;
+}
+.technology-marquee {
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+}
+.technology-track {
+  align-items: center;
+  display: inline-flex;
+  gap: 16px;
+  min-width: max-content;
+  padding: 8px 0 4px;
+  will-change: transform;
+  animation: technology-marquee 30s linear infinite;
+}
+.technology-badge {
+  align-items: center;
+  background: rgba(255, 255, 255, .8);
+  border: 1px solid rgba(15, 23, 42, .12);
+  border-radius: 999px;
+  color: #111827;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 14px;
+  font-weight: 700;
+  gap: 10px;
+  letter-spacing: -.04em;
+  padding: 10px 18px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, .05);
+}
+.technology-logo {
+  display: block;
+  height: 18px;
+  width: 18px;
+  object-fit: contain;
+}
+@keyframes technology-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 .faq { background: #170d10; }
 .contact { background: #e65c19; color: #170d10; }
 .contact .eyebrow { color: #170d10; }

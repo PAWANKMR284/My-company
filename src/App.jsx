@@ -8,6 +8,7 @@ import { ProjectGrid } from "./components/ProjectGrid";
 import { ServiceList } from "./components/ServiceList";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
+import awsLogo from "./assets/technology/aws.svg";
 
 const heroImages = [
   {
@@ -216,6 +217,95 @@ function NumbersSection() {
   );
 }
 
+function TechnologySection() {
+  const technologies = [
+    { name: "AWS", logo: awsLogo },
+    {
+      name: "TypeScript",
+      logo: "https://cdn.simpleicons.org/typescript/3178C6",
+    },
+    { name: "Java", logo: "https://cdn.simpleicons.org/openjdk/ED8B00" },
+    {
+      name: "Spring Boot",
+      logo: "https://cdn.simpleicons.org/springboot/6DB33F",
+    },
+    { name: "React", logo: "https://cdn.simpleicons.org/react/61DAFB" },
+    { name: "React Native", logo: "https://cdn.simpleicons.org/react/61DAFB" },
+    { name: "Node.js", logo: "https://cdn.simpleicons.org/nodedotjs/339933" },
+    { name: "Next.js", logo: "https://cdn.simpleicons.org/nextdotjs/000000" },
+    { name: "OpenAI", logo: "https://cdn.simpleicons.org/openai/412991" },
+    {
+      name: "TensorFlow",
+      logo: "https://cdn.simpleicons.org/tensorflow/FF6F00",
+    },
+    { name: "PyTorch", logo: "https://cdn.simpleicons.org/pytorch/EE4C2C" },
+    { name: "LangChain", logo: "https://cdn.simpleicons.org/langchain/1C3C3C" },
+    {
+      name: "Hugging Face",
+      logo: "https://cdn.simpleicons.org/huggingface/FFD21E",
+    },
+    { name: "Firebase", logo: "https://cdn.simpleicons.org/firebase/FFCA28" },
+    {
+      name: "PostgreSQL",
+      logo: "https://cdn.simpleicons.org/postgresql/4169E1",
+    },
+    { name: "MySQL", logo: "https://cdn.simpleicons.org/mysql/4479A1" },
+    { name: "MongoDB", logo: "https://cdn.simpleicons.org/mongodb/47A248" },
+    { name: "Flutter", logo: "https://cdn.simpleicons.org/flutter/02569B" },
+    { name: ".NET", logo: "https://cdn.simpleicons.org/dotnet/512BD4" },
+    { name: "Angular", logo: "https://cdn.simpleicons.org/angular/DD0031" },
+    { name: "Vue", logo: "https://cdn.simpleicons.org/vuedotjs/4FC08D" },
+    { name: "Python", logo: "https://cdn.simpleicons.org/python/3776AB" },
+    { name: "Go", logo: "https://cdn.simpleicons.org/go/00ADD8" },
+    { name: "Laravel", logo: "https://cdn.simpleicons.org/laravel/FF2D20" },
+    { name: "Docker", logo: "https://cdn.simpleicons.org/docker/2496ED" },
+    {
+      name: "Kubernetes",
+      logo: "https://cdn.simpleicons.org/kubernetes/326CE5",
+    },
+    { name: "GraphQL", logo: "https://cdn.simpleicons.org/graphql/E10098" },
+    {
+      name: "Tailwind CSS",
+      logo: "https://cdn.simpleicons.org/tailwindcss/06B6D4",
+    },
+    { name: "Swift", logo: "https://cdn.simpleicons.org/swift/F05138" },
+    { name: "Kotlin", logo: "https://cdn.simpleicons.org/kotlin/7F52FF" },
+  ];
+  const marqueeItems = [...technologies, ...technologies];
+
+  return (
+    <section
+      className="technology section-pad reveal-section"
+      id="technologies"
+    >
+      <div className="technology-header">
+        <h2 className="technology-title">Technologies we work with</h2>
+      </div>
+      <div
+        className="technology-marquee"
+        aria-label="Technologies we work with"
+      >
+        <div className="technology-track">
+          {marqueeItems.map((technology, index) => (
+            <span
+              key={`${technology.name}-${index}`}
+              className="technology-badge"
+            >
+              <img
+                src={technology.logo}
+                alt={technology.name}
+                className="technology-logo"
+                loading="lazy"
+              />
+              <span>{technology.name}</span>
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function FaqSection() {
   return (
     <section className="faq section-pad reveal-section">
@@ -297,6 +387,7 @@ function App() {
         <WorkSection />
         <IndustriesSection />
         <NumbersSection />
+        <TechnologySection />
         <FaqSection />
         <ContactSection />
       </main>
