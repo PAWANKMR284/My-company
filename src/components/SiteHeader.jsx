@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Brand } from "./Brand";
 
 export function SiteHeader({ menuOpen, onMenuToggle, onNavigate }) {
@@ -23,6 +24,9 @@ export function SiteHeader({ menuOpen, onMenuToggle, onNavigate }) {
         <a href="#about" onClick={onNavigate}>
           About
         </a>
+        <Link to="/blog" onClick={onNavigate}>
+          Blog
+        </Link>
         <a className="nav-contact" href="#contact" onClick={onNavigate}>
           Start a project <span>↗</span>
         </a>

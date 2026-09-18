@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
+import { BlogPage } from "./components/BlogPage";
+import { BlogIndexPage } from "./components/BlogIndexPage";
+import { BlogSection } from "./components/BlogSection";
 import { ContactForm } from "./components/ContactForm";
 import { Eyebrow, TextLink } from "./components/Brand";
 import { FaqList } from "./components/FaqList";
@@ -388,8 +392,26 @@ function ContactSection() {
   );
 }
 
+function HomePage() {
+  return (
+    <>
+      <Hero />
+      <IntroSection />
+      <ServicesSection />
+      <WorkSection />
+      <IndustriesSection />
+      <NumbersSection />
+      <TechnologySection />
+      <BlogSection />
+      <FaqSection />
+      <ContactSection />
+    </>
+  );
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     document.documentElement.classList.add("has-motion");
@@ -411,7 +433,7 @@ function App() {
       revealObserver.disconnect();
       document.documentElement.classList.remove("has-motion");
     };
-  }, []);
+  }, [location.pathname]);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -422,18 +444,14 @@ function App() {
         onMenuToggle={() => setMenuOpen(!menuOpen)}
         onNavigate={closeMenu}
       />
-      <main id="top">
-        <Hero />
-        <IntroSection />
-        <ServicesSection />
-        <WorkSection />
-        <IndustriesSection />
-        <NumbersSection />
-        <TechnologySection />
-        <FaqSection />
-        <ContactSection />
-      </main>
-      <SiteFooter />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/blog" element={<BlogIndexPage />} />
+        <Route path="/blog/:slug" element={<BlogPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+      {location.pathname === "/" && <SiteFooter />}
+      {location.pathname.startsWith("/blog") && <SiteFooter />}
     </div>
   );
 }
