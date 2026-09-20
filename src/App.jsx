@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
-import { BlogPage } from "./components/BlogPage";
-import { BlogIndexPage } from "./components/BlogIndexPage";
 import { BlogSection } from "./components/BlogSection";
 import { ContactForm } from "./components/ContactForm";
 import { Eyebrow, TextLink } from "./components/Brand";
@@ -13,6 +11,17 @@ import { ServiceList } from "./components/ServiceList";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
 import awsLogo from "./assets/technology/aws.svg";
+
+const BlogIndexPage = lazy(() =>
+  import("./components/BlogIndexPage").then(({ BlogIndexPage: Page }) => ({
+    default: Page,
+  })),
+);
+const BlogPage = lazy(() =>
+  import("./components/BlogPage").then(({ BlogPage: Page }) => ({
+    default: Page,
+  })),
+);
 
 const heroImages = [
   {
@@ -447,12 +456,14 @@ function App() {
         onNavigate={closeMenu}
       />
       <main id="main-content" className="site-main">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/blog" element={<BlogIndexPage />} />
-          <Route path="/blog/:slug" element={<BlogPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/blog" element={<BlogIndexPage />} />
+            <Route path="/blog/:slug" element={<BlogPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Suspense>
       </main>
       {location.pathname === "/" && <SiteFooter />}
       {location.pathname.startsWith("/blog") && <SiteFooter />}
