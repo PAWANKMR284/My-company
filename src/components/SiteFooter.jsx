@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Brand } from "./Brand";
 
 export function SiteFooter() {
@@ -14,10 +15,10 @@ export function SiteFooter() {
         <div className="footer-links-block">
           <p className="footer-label">Explore</p>
           <nav aria-label="Footer navigation">
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#work">Work</a>
-            <a href="#contact">Contact</a>
+            <Link to="/#about">About</Link>
+            <Link to="/#services">Services</Link>
+            <Link to="/#work">Work</Link>
+            <Link to="/#contact">Contact</Link>
           </nav>
         </div>
         <div className="footer-contact-block">

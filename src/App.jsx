@@ -446,6 +446,21 @@ function App() {
     };
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (location.pathname !== "/" || !location.hash) {
+      return;
+    }
+
+    const targetId = decodeURIComponent(location.hash.slice(1));
+    const target = document.getElementById(targetId);
+
+    if (target) {
+      requestAnimationFrame(() => {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+  }, [location.pathname, location.hash]);
+
   const closeMenu = () => setMenuOpen(false);
 
   return (

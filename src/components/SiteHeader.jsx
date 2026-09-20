@@ -15,21 +15,21 @@ export function SiteHeader({ menuOpen, onMenuToggle, onNavigate }) {
         <span />
       </button>
       <nav className={menuOpen ? "main-nav open" : "main-nav"}>
-        <a href="#services" onClick={onNavigate}>
+        <Link to="/#services" onClick={onNavigate}>
           Services
-        </a>
-        <a href="#work" onClick={onNavigate}>
+        </Link>
+        <Link to="/#work" onClick={onNavigate}>
           Work
-        </a>
-        <a href="#about" onClick={onNavigate}>
+        </Link>
+        <Link to="/#about" onClick={onNavigate}>
           About
-        </a>
+        </Link>
         <Link to="/blog" onClick={onNavigate}>
           Blog
         </Link>
-        <a className="nav-contact" href="#contact" onClick={onNavigate}>
+        <Link className="nav-contact" to="/#contact" onClick={onNavigate}>
           Start a project <span>↗</span>
-        </a>
+        </Link>
       </nav>
     </header>
   );
