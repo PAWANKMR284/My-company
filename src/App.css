@@ -6,8 +6,10 @@ a { color: inherit; text-decoration: none; }
 button, input, textarea { font: inherit; }
 .site-shell { overflow: hidden; }
 .site-header { align-items: center; display: flex; justify-content: space-between; padding: 28px 5vw; position: absolute; width: 100%; z-index: 5; }
-.brand { align-items: flex-start; display: inline-flex; gap: 7px; letter-spacing: -.08em; line-height: .8; text-transform: lowercase; }
-.brand span { font-size: 27px; font-weight: 800; }.brand b { font-size: 9px; letter-spacing: -.04em; line-height: .95; margin-top: 1px; }
+.brand { align-content: center; display: inline-grid; gap: 5px; letter-spacing: 0; line-height: 1; text-decoration: none; }
+.brand-name { color: inherit; font-size: 27px; font-weight: 800; letter-spacing: -.045em; white-space: nowrap; }
+.brand-initial { color: #ff7a38; }
+.brand-tagline { color: inherit; font: 9px 'DM Mono', monospace; letter-spacing: .12em; opacity: .72; text-transform: uppercase; }
 .main-nav { align-items: center; display: flex; gap: 36px; font-size: 12px; font-weight: 700; }.main-nav a:not(.nav-contact) { opacity: .7; }.main-nav a:hover { opacity: 1; }
 .blog-section { background: #f6f1ea; }
 .blog-heading { align-items: end; display: flex; justify-content: space-between; gap: 20px; }
@@ -417,4 +419,24 @@ h1, h2, h3, p { margin-top: 0; }.hero h1 { font-size: clamp(64px, 9.5vw, 145px);
 @media (prefers-reduced-motion: reduce) {
 	*, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 	.has-motion .reveal-section { opacity: 1; transform: none; }
+}
+
+.project-grid {
+  gap: 28px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.project-1 { grid-row: auto; }
+.project-image,
+.project-2 .project-image,
+.project-3 .project-image {
+  aspect-ratio: 3 / 2;
+  min-height: 0;
+}
+@media (min-width: 761px) and (max-width: 1000px) {
+  .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .project-3 { grid-column: 1 / -1; }
+  .project-3 .project-image { aspect-ratio: 2 / 1; }
+}
+@media (max-width: 760px) {
+  .project-grid { display: grid; grid-template-columns: minmax(0, 1fr); }
 }

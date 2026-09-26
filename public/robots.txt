@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pawantechsolution.netlify.app/sitemap4.xml
+Sitemap: https://vayulogic.netlify.app/sitemap4.xml

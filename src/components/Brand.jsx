@@ -1,15 +1,10 @@
 export function Brand({ className = "" }) {
   return (
-    <a
-      className={`brand ${className}`.trim()}
-      href="#top"
-      aria-label="pawan tech solution, home"
-    >
-      <span>pawan</span>{" "}
-      <b>
-        tech <br />
-        solution
-      </b>
+    <a className={`brand ${className}`.trim()} href="#top">
+      <span className="brand-name">
+        <span className="brand-initial">V</span>ayuLogic
+      </span>
+      <span className="brand-tagline">One-stop tech solution</span>
     </a>
   );
 }

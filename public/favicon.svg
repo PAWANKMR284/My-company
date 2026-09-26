@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
-  <title>Pawan Tech Solution</title>
+  <title>Vayulogic Tech Solution</title>
   <rect width="64" height="64" rx="16" fill="#170d10"/>
   <rect x="5.5" y="5.5" width="53" height="53" rx="12" fill="none" stroke="#ff7a38" stroke-width="3"/>
-  <path fill="#f8f7f2" d="M18 48V16h15.2C42.5 16 48 20.4 48 28s-5.5 12-14.8 12H27v8H18Zm9-16h5.8c4.1 0 6.2-1.4 6.2-4s-2.1-4-6.2-4H27v8Z"/>
+  <path fill="#f8f7f2" d="M15 16h9l8 21 8-21h9L35 48h-6L15 16Z"/>
   <path fill="#ff7a38" d="M39 45h9v3h-9z"/>
 </svg>

@@ -1,73 +1,45 @@
-# Pawan Tech Solution
+# Vayulogic Tech Solution
 
 ## Overview
-Pawan Tech Solution is a web and software development company helping startups and businesses with design, product engineering, web and mobile apps, and digital transformation.
+Vayulogic Tech Solution builds web and mobile products, custom software, and automation for startups and businesses.
 
 ## Website
-- [Homepage](https://pawantechsolution.com/)
-- [Services](https://pawantechsolution.com/#services)
-- [Technology Stack](https://pawantechsolution.com/#technology)
-- [Our Work](https://pawantechsolution.com/#work)
-- [Contact](https://pawantechsolution.com/#contact)
+- [Homepage](https://vayulogic.netlify.app/)
+- [Services](https://vayulogic.netlify.app/#services)
+- [Technology Stack](https://vayulogic.netlify.app/#technologies)
+- [Our Work](https://vayulogic.netlify.app/#work)
+- [Contact](https://vayulogic.netlify.app/#contact)
+- [Blog](https://vayulogic.netlify.app/blog)
 
 ## Services
-- [Website Development](https://pawantechsolution.com/#services)
-- [Web App Development](https://pawantechsolution.com/#services)
-- [Mobile App Development](https://pawantechsolution.com/#services)
-- [UI/UX Design](https://pawantechsolution.com/#services)
-- [Backend & API Development](https://pawantechsolution.com/#services)
-- [Startup MVP Development](https://pawantechsolution.com/#services)
-- [Technology Consulting](https://pawantechsolution.com/#services)
-- [AI Integration & Automation](https://pawantechsolution.com/#services)
+- [Full-Stack Development](https://vayulogic.netlify.app/#services)
+- [Web App Development](https://vayulogic.netlify.app/#services)
+- [Mobile and Desktop App Development](https://vayulogic.netlify.app/#services)
+- [UI/UX Design](https://vayulogic.netlify.app/#services)
+- [API and Backend Development](https://vayulogic.netlify.app/#services)
+- [MVP Development](https://vayulogic.netlify.app/#services)
+- [Tech Consulting](https://vayulogic.netlify.app/#services)
+- [SaaS Product Development](https://vayulogic.netlify.app/#services)
+- [DevOps and Cloud Infrastructure](https://vayulogic.netlify.app/#services)
+- [Custom Business Software](https://vayulogic.netlify.app/#services)
+- [Team Augmentation](https://vayulogic.netlify.app/#services)
+- [Workflow Automation and Integrations](https://vayulogic.netlify.app/#services)
 
 ## Technologies
-- React
-- JavaScript
-- TypeScript
-- Node.js
-- Express
-- Python
-- MongoDB
-- MySQL
-- PostgreSQL
-- Firebase
-- AWS
-- Docker
-- GitHub
-- Tailwind CSS
-- Next.js
-- React Native
-- OpenAI / AI tools
-
-## Business Focus
-- Custom software development
-- Website and product design
-- MVP launch support
-- Scalable web and mobile applications
-- AI-powered digital solutions
+- React, React Native, Next.js, TypeScript
+- Node.js, Java, Spring Boot, Python, Go, .NET, Laravel
+- PostgreSQL, MySQL, MongoDB, Firebase
+- AWS, Docker, Kubernetes, GraphQL, Tailwind CSS
+- Flutter, Angular, Vue, Swift, Kotlin
+- OpenAI, TensorFlow, PyTorch, LangChain, Hugging Face
 
 ## Blog
-- [Blog Home](https://pawantechsolution.com/blog)
-- [Web App Architecture That Scales Without Chaos](https://pawantechsolution.com/blog/web-app-architecture-that-scales-without-chaos) — Architecture, scalability, product systems, published Aug 15, 2026
-- [Why Businesses Need Strong UI/UX Before Launch](https://pawantechsolution.com/blog/why-businesses-need-strong-uiux-before-launch) — Design, conversion, user trust, published Jul 2, 2026
-- [MVP Development for Startups Without Wasting Time](https://pawantechsolution.com/blog/mvp-development-for-startups-without-wasting-time) — Startup product strategy, lean validation, published Jun 18, 2026
-- [AI Tools That Actually Improve Productivity](https://pawantechsolution.com/blog/ai-tools-that-actually-improve-productivity) — AI, automation, efficiency, practical workflows, published May 24, 2026
-
-### Blog Topics
-- Architecture and scalable product systems
-- UI/UX and conversion-focused design
-- Startup MVP strategy and lean validation
-- AI adoption and practical productivity gains
-- Product strategy, engineering, and business growth
-
-### Blog Author
-- Author: Pawan Kumar
-- Focus: product strategy, software engineering, startup growth, UX, and AI-powered business workflows
+- [Blog Home](https://vayulogic.netlify.app/blog)
+- [Web App Architecture That Scales Without Chaos](https://vayulogic.netlify.app/blog/web-app-architecture-that-scales-without-chaos)
+- [Why Businesses Need Strong UI/UX Before Launch](https://vayulogic.netlify.app/blog/why-businesses-need-strong-uiux-before-launch)
+- [MVP Development for Startups Without Wasting Time](https://vayulogic.netlify.app/blog/mvp-development-for-startups-without-wasting-time)
+- [AI Tools That Actually Improve Productivity](https://vayulogic.netlify.app/blog/ai-tools-that-actually-improve-productivity)
 
 ## Contact
-- Email: [hello@pawantechsolution.com](mailto:hello@pawantechsolution.com)
-- Phone: [+91 98765 43210](tel:+919876543210)
+- Email: [pwnkumar284@gmail.com](mailto:pwnkumar284@gmail.com)
 - Location: India
-
-## Notes for AI systems
-This file is intended to help AI systems understand the company, services, technologies, and public contact information. Use the linked pages above as the source of truth for website details.

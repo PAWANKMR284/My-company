@@ -23,24 +23,50 @@ const BlogPage = lazy(() =>
   })),
 );
 
+const heroImageWidths = [480, 640, 960, 1440];
+const heroImageUrl = (image, width, format = "webp") =>
+  image.startsWith("/")
+    ? image.replace(/-\d+\.\w+$/, `-${width}.${format}`)
+    : `${image}&w=${width}&q=45`;
+const heroImageSrcSet = (image, format = "webp") =>
+  heroImageWidths
+    .map((width) => `${heroImageUrl(image, width, format)} ${width}w`)
+    .join(", ");
+let heroImagesPrefetched = false;
+
+const prefetchOtherHeroImages = () => {
+  if (heroImagesPrefetched) return;
+  heroImagesPrefetched = true;
+
+  window.setTimeout(() => {
+    heroImages.slice(1).forEach(({ image }) => {
+      const imageHint = new Image();
+      imageHint.fetchPriority = "low";
+      imageHint.decoding = "async";
+      imageHint.sizes = "100vw";
+      imageHint.srcset = heroImageSrcSet(image);
+      imageHint.src = heroImageUrl(image, 960);
+    });
+  }, 1000);
+};
+
 const heroImages = [
   {
-    image:
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&fm=webp&w=1800&q=82",
-    eyebrow: "Pawan Tech Software Solutions · India",
+    image: "/images/hero-640.webp",
+    eyebrow: "Vayulogic Tech Solution · India",
     title: ["Build software", "that moves", "business forward."],
-    copy: "Pawan Tech Solution delivers professional web development and tailored digital products for lasting business impact.",
+    copy: "Vayulogic Tech Solution delivers professional web development and tailored digital products for lasting business impact.",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&fm=webp&w=1800&q=82",
+      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&fm=webp",
     eyebrow: "Custom Web Development Services · Together",
     title: ["Turn ideas", "into useful", "experiences."],
     copy: "From the first sketch to the final release, we create responsive web design and digital products ready to grow.",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&fm=webp&w=1800&q=82",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&fm=webp",
     eyebrow: "IT Consultancy Solutions for bold teams",
     title: ["Make progress", "feel", "remarkable."],
     copy: "Senior thinking and thoughtful technology help your team move faster with practical software solutions in Delhi and beyond.",
@@ -66,21 +92,40 @@ function Hero() {
   return (
     <section className="hero section-pad">
       <div className="hero-background" aria-hidden="true">
-        {heroImages.map(({ image }, index) => (
-          <img
-            className={index === activeImage ? "is-active" : ""}
-            key={image}
-            src={image}
-            srcSet={`${image}&w=900 900w, ${image}&w=1400 1400w, ${image}&w=1800 1800w`}
-            sizes="100vw"
-            alt=""
-            width="1800"
-            height="1200"
-            loading={index === 0 ? "eager" : "lazy"}
-            fetchPriority={index === 0 ? "high" : "low"}
-            decoding="async"
-          />
-        ))}
+        {heroImages.map(
+          ({ image }, index) =>
+            index === activeImage && (
+              <picture key={image}>
+                {image.startsWith("/") && (
+                  <>
+                    <source
+                      media="(max-width: 760px)"
+                      type="image/avif"
+                      srcSet="/images/hero-mobile.avif"
+                    />
+                    <source
+                      media="(min-width: 761px)"
+                      type="image/avif"
+                      srcSet={heroImageUrl(image, 1440, "avif")}
+                    />
+                  </>
+                )}
+                <img
+                  className="is-active"
+                  src={heroImageUrl(image, 960)}
+                  srcSet={heroImageSrcSet(image)}
+                  sizes="100vw"
+                  alt=""
+                  width="1800"
+                  height="1200"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  onLoad={prefetchOtherHeroImages}
+                />
+              </picture>
+            ),
+        )}
       </div>
       <div className="hero-copy reveal">
         <Eyebrow line>{activeSlide.eyebrow}</Eyebrow>
@@ -131,7 +176,7 @@ function Hero() {
 function IntroSection() {
   return (
     <section className="intro section-pad reveal-section" id="about">
-      <Eyebrow>Why Pawan Tech Solution</Eyebrow>
+      <Eyebrow>Why Vayulogic Tech Solution</Eyebrow>
       <div className="intro-grid">
         <h2>
           Good software
@@ -142,7 +187,7 @@ function IntroSection() {
           <p className="lead">
             The best digital products feel simple because a lot of care went
             into making them that way. As a Web Development Company in Varanasi,
-            Pawan Tech Solution brings strategy, design, and engineering
+            Vayulogic Tech Solution brings strategy, design, and engineering
             together to make complex things feel clear.
           </p>
           <TextLink>More about us</TextLink>

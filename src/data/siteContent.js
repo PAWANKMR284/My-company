@@ -29,12 +29,13 @@ export const services = [
   },
   {
     number: "03",
-    title: "Mobile App Development",
+    title: "Mobile & Desktop App Development",
     kicker: "Cross-platform apps that feel native.",
     summary:
-      "We build iOS and Android apps using React Native — one codebase, two platforms, zero compromise on quality. From onboarding flows to complex real-time features, we deliver apps users love.",
+      "We build mobile and desktop apps with React Native and Flutter — shared codebases, native-quality experiences, and a faster path from idea to launch. From onboarding flows to complex real-time features, we deliver apps users love.",
     details: [
       "React Native (iOS & Android)",
+      "Flutter mobile & desktop apps",
       "Offline-first architecture",
       "Push notifications & deep linking",
       "App Store & Play Store submission",
@@ -95,6 +96,76 @@ export const services = [
       "Code audits & refactoring plans",
       "Scaling & performance strategy",
       "CTO-as-a-service for startups",
+    ],
+  },
+  {
+    number: "08",
+    title: "SaaS Product Development",
+    kicker: "From first release to recurring revenue.",
+    summary:
+      "We turn product ideas into production-ready SaaS platforms, with the tenant architecture, subscriptions, onboarding, and security needed to support real customers and sustainable growth.",
+    details: [
+      "Multi-tenant architecture",
+      "Subscription & billing workflows",
+      "Customer onboarding",
+      "Roles, permissions & security",
+      "Analytics and product iteration",
+    ],
+  },
+  {
+    number: "09",
+    title: "DevOps & Cloud Infrastructure",
+    kicker: "Ship reliably. Operate with confidence.",
+    summary:
+      "We set up dependable delivery pipelines and cloud infrastructure so your team can release faster, spot issues sooner, and operate your product with confidence.",
+    details: [
+      "CI/CD pipelines",
+      "Cloud infrastructure & deployment",
+      "Docker & Kubernetes",
+      "Monitoring and alerting",
+      "Runbooks and operational handover",
+    ],
+  },
+  {
+    number: "10",
+    title: "Custom Business Software",
+    kicker: "Software shaped around how your team works.",
+    summary:
+      "We build software around your real processes, replacing repetitive manual work and disconnected tools with focused systems your business owns and can evolve.",
+    details: [
+      "Workflow discovery & process mapping",
+      "Internal tools and business portals",
+      "Legacy system integrations",
+      "Automation of repetitive tasks",
+      "Documentation and team handover",
+    ],
+  },
+  {
+    number: "11",
+    title: "Team Augmentation",
+    kicker: "Experienced engineers, embedded in your team.",
+    summary:
+      "Add experienced product engineers to your existing team when you need extra capacity or specialist skills. We work within your tools, workflows, and delivery practices.",
+    details: [
+      "Frontend, backend & mobile engineers",
+      "Fit with your existing delivery process",
+      "Short-term or ongoing support",
+      "Knowledge sharing and documentation",
+      "Flexible capacity as priorities change",
+    ],
+  },
+  {
+    number: "12",
+    title: "Workflow Automation & Integrations",
+    kicker: "Less busywork. Better-connected systems.",
+    summary:
+      "We automate repetitive business workflows and connect the tools your team already uses, reducing manual handoffs, duplicate data entry, and avoidable errors.",
+    details: [
+      "Workflow mapping & automation",
+      "Third-party APIs and system integrations",
+      "Data synchronisation between tools",
+      "Approvals, notifications & scheduled tasks",
+      "Monitoring, error handling & documentation",
     ],
   },
 ];

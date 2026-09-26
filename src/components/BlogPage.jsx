@@ -11,7 +11,7 @@ export function BlogPage() {
   return (
     <>
       <Helmet>
-        <title>{currentPost.title} | Pawan Tech Solution</title>
+        <title>{currentPost.title} | Vayulogic Tech Solution</title>
         <meta name="description" content={currentPost.excerpt} />
         <meta name="keywords" content={currentPost.tags.join(", ")} />
       </Helmet>

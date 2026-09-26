@@ -29,7 +29,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="footer-bottom">
-        <small>© 2026 Pawan Tech Solution. All rights reserved.</small>
+        <small>© 2026 Vayulogic Tech Solution. All rights reserved.</small>
         <span>Built with care in India</span>
         <a className="back-to-top" href="#top" aria-label="Back to top">
           ↑ <span>Back to top</span>
