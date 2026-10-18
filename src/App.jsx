@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import { BlogSection } from "./components/BlogSection";
@@ -32,6 +32,12 @@ const heroImageSrcSet = (image, format = "webp") =>
   heroImageWidths
     .map((width) => `${heroImageUrl(image, width, format)} ${width}w`)
     .join(", ");
+const heroThumbnailSrcSet = (image) =>
+  image.startsWith("/")
+    ? heroImageSrcSet(image, "avif")
+    : [320, 480, 640]
+        .map((width) => `${image}&w=${width}&q=35 ${width}w`)
+        .join(", ");
 let heroImagesPrefetched = false;
 
 const prefetchOtherHeroImages = () => {
@@ -85,12 +91,53 @@ function Hero() {
     return () => window.clearInterval(intervalId);
   }, []);
 
+  useEffect(() => {
+    const heroArt = document.querySelector(".hero-side-art");
+    if (
+      !heroArt ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return undefined;
+    }
+
+    const cards = [...heroArt.querySelectorAll("[data-parallax]")];
+    let animationFrame = 0;
+
+    const updateParallax = () => {
+      if (animationFrame) return;
+      animationFrame = window.requestAnimationFrame(() => {
+        animationFrame = 0;
+        const hero = heroArt.closest(".hero");
+        if (!hero) return;
+
+        const progress = Math.min(
+          1,
+          Math.max(0, -hero.getBoundingClientRect().top / hero.offsetHeight),
+        );
+        cards.forEach((card) => {
+          const depth = Number(card.dataset.parallax) || 0;
+          card.style.translate = `0 ${Math.round(progress * depth)}px`;
+        });
+      });
+    };
+
+    updateParallax();
+    window.addEventListener("scroll", updateParallax, { passive: true });
+    window.addEventListener("resize", updateParallax);
+
+    return () => {
+      window.removeEventListener("scroll", updateParallax);
+      window.removeEventListener("resize", updateParallax);
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
   const showImage = (index) => {
     setActiveImage((index + heroImages.length) % heroImages.length);
   };
 
   return (
-    <section className="hero section-pad">
+    <section className="hero section-pad" id="top">
       <div className="hero-background" aria-hidden="true">
         {heroImages.map(
           ({ image }, index) =>
@@ -126,6 +173,51 @@ function Hero() {
               </picture>
             ),
         )}
+      </div>
+      <div className="hero-side-art" aria-hidden="true">
+        <span className="hero-orbit hero-orbit-one" />
+        <span className="hero-orbit hero-orbit-two" />
+        {heroImages.map(({ image }, index) => (
+          <figure
+            className={`hero-float-card hero-float-card-${index + 1}`}
+            data-parallax={18 + index * 12}
+            key={image}
+          >
+            <picture>
+              {image.startsWith("/") && (
+                <source
+                  type="image/avif"
+                  srcSet={heroThumbnailSrcSet(image)}
+                  sizes="(max-width: 760px) 32vw, 18vw"
+                />
+              )}
+              <img
+                src={heroImageUrl(image, image.startsWith("/") ? 480 : 320)}
+                srcSet={
+                  image.startsWith("/")
+                    ? heroImageSrcSet(image)
+                    : heroThumbnailSrcSet(image)
+                }
+                sizes="(max-width: 760px) 32vw, 18vw"
+                alt=""
+                width="640"
+                height="480"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          </figure>
+        ))}
+      </div>
+      <div className="hero-wordmark" aria-hidden="true">
+        {"ARTCRAFT".split("").map((letter, index) => (
+          <span
+            key={`${letter}-${index}`}
+            style={{ animationDelay: `${index * 0.12}s` }}
+          >
+            {letter}
+          </span>
+        ))}
       </div>
       <div className="hero-copy reveal">
         <Eyebrow line>{activeSlide.eyebrow}</Eyebrow>
@@ -276,7 +368,10 @@ function WorkSection() {
 
 function IndustriesSection() {
   return (
-    <section className="industries section-pad reveal-section">
+    <section
+      className="industries section-pad reveal-section"
+      id="industries"
+    >
       <div className="industry-head">
         <div>
           <Eyebrow>Across industries</Eyebrow>
@@ -305,7 +400,7 @@ function NumbersSection() {
   ];
 
   return (
-    <section className="numbers section-pad reveal-section">
+    <section className="numbers section-pad reveal-section" id="numbers">
       <Eyebrow>A small studio. A big point of view.</Eyebrow>
       <div className="number-grid">
         {numbers.map(([value, label]) => (
@@ -410,7 +505,7 @@ function TechnologySection() {
 
 function FaqSection() {
   return (
-    <section className="faq section-pad reveal-section">
+    <section className="faq section-pad reveal-section" id="faq">
       <div className="faq-intro">
         <Eyebrow>Good to know</Eyebrow>
         <h2>
@@ -465,28 +560,354 @@ function HomePage() {
   );
 }
 
+const journeySections = [
+  ["top", "Home"],
+  ["about", "About"],
+  ["services", "Services"],
+  ["work", "Work"],
+  ["industries", "Industries"],
+  ["numbers", "Studio"],
+  ["technologies", "Technology"],
+  ["faq", "FAQ"],
+  ["contact", "Contact"],
+];
+const scrollTickValues = Array.from({ length: 21 }, (_, index) => index * 5);
+
+function ScrollProgressRail() {
+  const [activeSection, setActiveSection] = useState("top");
+  const [progress, setProgress] = useState(0);
+  const isDragging = useRef(false);
+
+  const scrollToProgress = (value) => {
+    const scrollableHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const nextProgress = Math.min(100, Math.max(0, value));
+
+    window.scrollTo({
+      top: (scrollableHeight * nextProgress) / 100,
+      behavior: "instant",
+    });
+  };
+
+  const updateProgressFromPointer = (event) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const nextProgress = ((event.clientY - bounds.top) / bounds.height) * 100;
+
+    scrollToProgress(nextProgress);
+  };
+
+  const handleProgressKeyDown = (event) => {
+    const keyProgress = {
+      ArrowDown: progress + 1,
+      ArrowUp: progress - 1,
+      End: 100,
+      Home: 0,
+      PageDown: progress + 10,
+      PageUp: progress - 10,
+    }[event.key];
+
+    if (keyProgress === undefined) return;
+    event.preventDefault();
+    scrollToProgress(keyProgress);
+  };
+
+  useEffect(() => {
+    const sections = journeySections
+      .map(([id]) => document.getElementById(id))
+      .filter(Boolean);
+    const activeObserver = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (first, second) =>
+              second.intersectionRatio - first.intersectionRatio,
+          )[0];
+
+        if (visibleSection) {
+          setActiveSection(visibleSection.target.id);
+        }
+      },
+      { rootMargin: "-35% 0px -50% 0px", threshold: [0, 0.1, 0.25, 0.5] },
+    );
+    let animationFrame = 0;
+
+    const updateProgress = () => {
+      if (animationFrame) return;
+      animationFrame = window.requestAnimationFrame(() => {
+        animationFrame = 0;
+        const scrollableHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const nextProgress =
+          scrollableHeight > 0
+            ? Math.round((window.scrollY / scrollableHeight) * 100)
+            : 0;
+
+        setProgress((currentProgress) =>
+          currentProgress === nextProgress ? currentProgress : nextProgress,
+        );
+      });
+    };
+
+    sections.forEach((section) => activeObserver.observe(section));
+    updateProgress();
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+
+    return () => {
+      activeObserver.disconnect();
+      window.removeEventListener("scroll", updateProgress);
+      window.removeEventListener("resize", updateProgress);
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
+  return (
+    <aside
+      className="scroll-progress-rail"
+      aria-label="Page sections"
+      data-tone={
+        ["top", "about", "services", "faq"].includes(activeSection)
+          ? "light"
+          : "dark"
+      }
+    >
+      <nav className="scroll-progress-nav" aria-label="On this page">
+        {journeySections.map(([id, label]) => (
+          <a
+            href={`#${id}`}
+            key={id}
+            className={activeSection === id ? "is-active" : ""}
+            aria-current={activeSection === id ? "location" : undefined}
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
+      <div
+        className="scroll-progress-scale"
+        role="scrollbar"
+        aria-label="Page scroll progress"
+        aria-controls="main-content"
+        aria-orientation="vertical"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={progress}
+        aria-valuetext={`${progress}% through page`}
+        tabIndex={0}
+        onKeyDown={handleProgressKeyDown}
+        onPointerDown={(event) => {
+          if (event.button !== 0) return;
+          isDragging.current = true;
+          event.currentTarget.setPointerCapture(event.pointerId);
+          updateProgressFromPointer(event);
+        }}
+        onPointerMove={(event) => {
+          if (isDragging.current || event.buttons === 1) {
+            updateProgressFromPointer(event);
+          }
+        }}
+        onPointerUp={() => {
+          isDragging.current = false;
+        }}
+        onPointerCancel={() => {
+          isDragging.current = false;
+        }}
+      >
+        {scrollTickValues.map((value) => (
+          <span
+            className={`scroll-progress-tick${value % 10 === 0 ? " is-major" : ""}${value <= progress ? " is-reached" : ""}${value === Math.round(progress / 5) * 5 ? " is-current" : ""}`}
+            data-value={value}
+            key={value}
+            style={{ top: `${value}%` }}
+          >
+            {value}
+          </span>
+        ))}
+        <span
+          className={`scroll-progress-marker${progress === 0 ? " at-start" : ""}${progress === 100 ? " at-end" : ""}`}
+          style={{ top: `${progress}%` }}
+          aria-hidden="true"
+        >
+          <span />
+          <b>{progress}</b>
+        </span>
+      </div>
+    </aside>
+  );
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     document.documentElement.classList.add("has-motion");
-    const revealItems = document.querySelectorAll(".reveal-section");
+    const revealSelector = [
+      "main h1",
+      "main h2",
+      "main h3",
+      ".hero-copy > .eyebrow",
+      ".reveal-section .eyebrow",
+      ".reveal-section .intro-grid > div",
+      ".reveal-section .number-grid > div",
+      ".reveal-section .technology-header",
+      ".reveal-section .technology-marquee",
+      ".reveal-section .service-row",
+      ".reveal-section .project-card",
+      ".reveal-section .how-we-work-header",
+      ".reveal-section .how-we-work-subtitle",
+      ".reveal-section .process-step",
+      ".reveal-section .industry-tabs",
+      ".reveal-section .industry-note",
+      ".reveal-section .industry-head > p",
+      ".reveal-section .blog-card",
+      ".reveal-section .faq-list",
+      ".reveal-section .faq-intro > p",
+      ".reveal-section .faq-intro > .text-link",
+      ".reveal-section .contact-copy > p",
+      ".reveal-section .contact-copy > .email-link",
+      ".reveal-section .contact-form",
+      ".reveal-section .section-heading > .text-link",
+      ".site-footer .footer-main > div",
+      ".site-footer .footer-bottom",
+      ".blog-page-header",
+      ".blog-index-header",
+      ".blog-index-card",
+      ".blog-post-image",
+      ".blog-post-intro",
+      ".blog-post-section",
+    ].join(", ");
+    const siblingIndexes = new WeakMap();
     const revealObserver = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            revealObserver.unobserve(entry.target);
+        entries.forEach(({ target, isIntersecting, intersectionRatio }) => {
+          if (isIntersecting && intersectionRatio >= 0.12) {
+            target.classList.add("is-visible");
+          } else {
+            target.classList.remove("is-visible");
           }
         });
       },
-      { threshold: 0.12 },
+      { threshold: [0, 0.12], rootMargin: "0px 0px -6% 0px" },
+    );
+    const headingObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (isIntersecting) {
+            animateHeadingLetters(target);
+            headingObserver.unobserve(target);
+          }
+        });
+      },
+      { rootMargin: "120px 0px 120px 0px" },
     );
 
-    revealItems.forEach((item) => revealObserver.observe(item));
+    const animateHeadingLetters = (heading) => {
+      if (heading.dataset.lettersReady) return;
+
+      heading.dataset.lettersReady = "true";
+      if (!heading.hasAttribute("aria-label")) {
+        heading.setAttribute(
+          "aria-label",
+          heading.textContent.replace(/\s+/g, " ").trim(),
+        );
+      }
+
+      const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
+      const textNodes = [];
+      while (walker.nextNode()) {
+        if (walker.currentNode.textContent.trim()) {
+          textNodes.push(walker.currentNode);
+        }
+      }
+
+      let characterIndex = 0;
+      textNodes.forEach((textNode) => {
+        const fragment = document.createDocumentFragment();
+        textNode.textContent.split(/(\s+)/u).forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/u.test(part)) {
+            fragment.appendChild(document.createTextNode(part));
+            return;
+          }
+
+          const word = document.createElement("span");
+          word.className = "headline-word";
+          Array.from(part).forEach((character) => {
+            const letter = document.createElement("span");
+            letter.className = "headline-character";
+            letter.setAttribute("aria-hidden", "true");
+            letter.style.setProperty(
+              "--char-delay",
+              `${Math.min(characterIndex, 26) * 12}ms`,
+            );
+            letter.textContent = character;
+            word.appendChild(letter);
+            characterIndex += 1;
+          });
+          fragment.appendChild(word);
+        });
+        textNode.parentNode.replaceChild(fragment, textNode);
+      });
+    };
+
+    const registerTarget = (target) => {
+      if (target.matches("h1, h2, h3") && !target.dataset.lettersReady) {
+        headingObserver.observe(target);
+      }
+      if (!target.classList.contains("scroll-reveal-item")) {
+        const parent = target.parentElement;
+        const siblingIndex = siblingIndexes.get(parent) || 0;
+        siblingIndexes.set(parent, siblingIndex + 1);
+        target.classList.add("scroll-reveal-item");
+        target.style.setProperty(
+          "--scroll-reveal-delay",
+          `${Math.min(siblingIndex, 4) * 90}ms`,
+        );
+      }
+      revealObserver.observe(target);
+    };
+
+    const scanTargets = (root) => {
+      if (
+        root.nodeType !== Node.ELEMENT_NODE &&
+        root.nodeType !== Node.DOCUMENT_NODE
+      ) {
+        return;
+      }
+      if (
+        root.nodeType === Node.ELEMENT_NODE &&
+        root.closest(
+          "h1[data-letters-ready], h2[data-letters-ready], h3[data-letters-ready]",
+        )
+      ) {
+        return;
+      }
+      if (
+        root.nodeType === Node.ELEMENT_NODE &&
+        root.matches(revealSelector)
+      ) {
+        registerTarget(root);
+      }
+      root.querySelectorAll(revealSelector).forEach(registerTarget);
+    };
+
+    scanTargets(document);
+    const mutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach(scanTargets);
+      });
+    });
+    mutationObserver.observe(document.querySelector("#main-content"), {
+      childList: true,
+      subtree: true,
+    });
+
     return () => {
+      mutationObserver.disconnect();
       revealObserver.disconnect();
+      headingObserver.disconnect();
       document.documentElement.classList.remove("has-motion");
     };
   }, [location.pathname]);
@@ -525,6 +946,7 @@ function App() {
           </Routes>
         </Suspense>
       </main>
+      {location.pathname === "/" && <ScrollProgressRail />}
       {location.pathname === "/" && <SiteFooter />}
       {location.pathname.startsWith("/blog") && <SiteFooter />}
     </div>
